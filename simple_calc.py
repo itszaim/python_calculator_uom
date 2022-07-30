@@ -29,57 +29,68 @@ def power(x, y):
 def remainder(x, y):
     return x % y
 
-#gets two float inputs and make sure it is a float.
-def get_two_floats():
-    while True:
-        try:
-            num1 = float(input ("Enter first number: "))
-            print(int(num1))
-            num2 = float(input ("Enter second number: "))
-            print(int(num2))
-        except ValueError:
-            print("When I ask for a number, give me a number.")
-        else:
-            return num1, num2
-
-
 #-------------------------------------
 #TODO: Write the select_op(choice) function here
 #This function sould cover Task 1 (Section 2) and Task 3
 
 def select_op(choice):
+  if (choice == "#"):                               #if the choice is "#" exit the program.
+    return -1
+  elif (choice == "$"):                             #if the choice is $ reset
+    return 0
+  elif choice in ('+','-','*','/','^','%'):
+    while (True):
+      num1str = str(input("Enter first number: "))      
+      print(num1str)
+      if num1str.endswith('#'):                       #check the input contains "# or $"
+        return -1
+      if num1str.endswith('$'):
+        return 0
+      try:
+        num1 = float(num1str)                           # handling value error if invalid input is entered.
+        break
+      except ValueError:
+        print("Not a valid number,please enter again")
+        continue
 
-  if choice in ('+','-','*','/','^','%',"#","$"):
-      if choice == "+":
-        num1, num2 = get_two_floats()
-        print(num1, "+", num2, "=", add(num1,num2))
-          
-      elif choice == "-":
-        num1, num2 = get_two_floats()
-        print(num1, "-", num2, "=", substract(num1,num2))
-          
-      elif choice == "*":
-        num1, num2 = get_two_floats()
-        print(num1, "*", num2, "=", multiply(num1,num2))
-              
-      elif choice == "/":
-        num1, num2 = get_two_floats()
-        print(num1, "/", num2, "=", devide(num1,num2))    
-          
-      elif choice == "^":
-        num1, num2 = get_two_floats()
-        print(num1, "^", num2, "=", power(num1,num2))
-          
-      elif choice == "%":
-        num1, num2 = get_two_floats()
-        print(num1, "%", num2, "=", remainder(num1,num2))
+    while (True):
+      num2str = str(input("Enter first number: "))
+      print(num2str)
+      if num2str.endswith('#'):
+        return -1
+      if num2str.endswith('$'):
+        return 0
+      try:
+        num2 = float(num2str)
+        break
+      except ValueError:
+        print("Not a valid number,please enter again")
+        continue    
       
-      elif choice == '#':
-        print("Done. Terminating")
-        exit()
+    if choice == "+":
+      print(num1, "+", num2, "=", add(num1,num2))
+        
+    elif choice == "-":
+      print(num1, "-", num2, "=", substract(num1,num2))
+        
+    elif choice == "*":
+      print(num1, "*", num2, "=", multiply(num1,num2))
+            
+    elif choice == "/":
+      print(num1, "/", num2, "=", devide(num1,num2))    
+        
+    elif choice == "^":
+      print(num1, "^", num2, "=", power(num1,num2))
+        
+    elif choice == "%":
+      print(num1, "%", num2, "=", remainder(num1,num2))
     
+    else:
+      print("Something Went Wrong")
   else:
     print("Unrecognized operation")
+
+
 
 #End the select_op(choice) function here
 #-------------------------------------
@@ -101,11 +112,7 @@ while True:
   choice = input("Enter choice(+,-,*,/,^,%,#,$): ")
   print(choice)
   if(select_op(choice) == '-1'):
-    break
-  #program ends here
-  #print("Done. Terminating")
-    #exit()
 
-else:
-  select_op(choice)
-  
+  #program ends here
+    print("Done. Terminating")
+    exit()
