@@ -28,21 +28,19 @@ def power(x, y):
 #this function gives remainder of x numbers.
 def remainder(x, y):
     return x % y
-
 #gets two float inputs and make sure it is a float.
 def get_two_floats():
-    while True:
-        try:
-            num1 = float(input ("Enter first number: "))
-            print(int(num1))
-            num2 = float(input ("Enter second number: "))
-            print(int(num2))
-        except ValueError:
-            print("When I ask for a number, give me a number.")
-        else:
-            return num1, num2
-
-
+  while True:
+    try:
+      num1 = float(input ("Enter first number: "))
+      print(int(num1))
+      num2 = float(input ("Enter second number: "))
+      print(int(num2))
+    except ValueError:
+      print("Not a valid number,please enter again")
+      return choice = input("Enter choice(+,-,*,/,^,%,#,$): ")
+    else:
+        return num1, num2
 #-------------------------------------
 #TODO: Write the select_op(choice) function here
 #This function sould cover Task 1 (Section 2) and Task 3
@@ -81,6 +79,8 @@ def select_op(choice):
   else:
     print("Unrecognized operation")
 
+
+
 #End the select_op(choice) function here
 #-------------------------------------
 #This is the main loop. It covers Task 1 (Section 1)
@@ -101,11 +101,10 @@ while True:
   choice = input("Enter choice(+,-,*,/,^,%,#,$): ")
   print(choice)
   if(select_op(choice) == '-1'):
-    break
+
   #program ends here
-  #print("Done. Terminating")
-    #exit()
+    print("Done. Terminating")
+    exit()
 
 else:
   select_op(choice)
-  
