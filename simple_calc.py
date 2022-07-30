@@ -54,7 +54,7 @@ def select_op(choice):
         continue
 
     while (True):
-      num2str = str(input("Enter first number: "))
+      num2str = str(input("Enter second number: "))
       print(num2str)
       if num2str.endswith('#'):
         return -1
@@ -111,8 +111,7 @@ while True:
   # take input from the user
   choice = input("Enter choice(+,-,*,/,^,%,#,$): ")
   print(choice)
-  if(select_op(choice) == '-1'):
-
-  #program ends here
+  if(select_op(choice) == -1):
+    #program ends here
     print("Done. Terminating")
     exit()
